@@ -280,12 +280,6 @@ rpa.echo("Execute Node:42");
 String apiResponse3 = rpa.callApi("POST","http://172.23.27.18:8000/hype/webhook/9/basarilikayitwebhook/success","{    \"INVOICENUMBER\": \"${INVOICENUMBER}\",    \"ponum\": \"${ponum}\",    \"fisno\": \"${fisno}\"}","{\"Content-Type\":\"application/json\"}");
 ///>
 
-rpa.echo("Execute Node:43");
-
- //< [KillProcess] [comment="Ax32.exe"] [rows="[{"applicationExe":{"value":"Ax32.exe","type":"input"},"id":0}]"]  
-rpa.killProcess("Ax32.exe");
-
- 
 }
 }else{
 }

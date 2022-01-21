@@ -161,6 +161,11 @@ rpa.echo("Execute Node:19");
 //< [Read] [comment="INVOICEAMOUNT"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[6]";xpath"] [to="INVOICEAMOUNT;input"] 
 	  String INVOICEAMOUNT = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[6]");
 
+rpa.echo("Execute Node:21");
+
+//< [Read] [comment="CURRENCYCODE"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[8]";xpath"] [to="CURRENCYCODE;input"] 
+	  String CURRENCYCODE = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[8]");
+
 rpa.echo("Execute Node:17");
 int AOG = Integer.parseInt(INVOICEAMOUNT)-Integer.parseInt(UNITPRICE)*Integer.parseInt(UNITQUANTITY);
 
