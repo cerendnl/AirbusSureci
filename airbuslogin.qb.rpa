@@ -1,0 +1,26 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:2");
+
+//< [LaunchWebSite] [comment=""https://spares.airbus.com/H380/spares/forms/airbusspares.sfcc?TYPE=33554433&REALMOID=06-f058e2ed-17ab-45f1-bb0e-7043e7d379a0&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-0cO6cUNMiUwYNDzYU0OOYryO02bybOYdV6ILdMqcd9Wfslw4Uu72wEVBl4IEzcb4CagWezrDK388Y5MhkGOqONFXuzVyJ8o%2f&TARGET=-SM-HTTPS%3a%2f%2fspares%2eairbus%2ecom%2fportal%2finfo%2ejsp%2eport%3fmenu--id%3dinfo""] [url=""https://spares.airbus.com/H380/spares/forms/airbusspares.sfcc?TYPE=33554433&REALMOID=06-f058e2ed-17ab-45f1-bb0e-7043e7d379a0&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-0cO6cUNMiUwYNDzYU0OOYryO02bybOYdV6ILdMqcd9Wfslw4Uu72wEVBl4IEzcb4CagWezrDK388Y5MhkGOqONFXuzVyJ8o%2f&TARGET=-SM-HTTPS%3a%2f%2fspares%2eairbus%2ecom%2fportal%2finfo%2ejsp%2eport%3fmenu--id%3dinfo";input"] 
+  rpa.launch("https://spares.airbus.com/H380/spares/forms/airbusspares.sfcc?TYPE=33554433&REALMOID=06-f058e2ed-17ab-45f1-bb0e-7043e7d379a0&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-0cO6cUNMiUwYNDzYU0OOYryO02bybOYdV6ILdMqcd9Wfslw4Uu72wEVBl4IEzcb4CagWezrDK388Y5MhkGOqONFXuzVyJ8o%2f&TARGET=-SM-HTTPS%3a%2f%2fspares%2eairbus%2ecom%2fportal%2finfo%2ejsp%2eport%3fmenu--id%3dinfo");
+///>
+
+rpa.echo("Execute Node:3");
+
+//< [Type] [comment="username"] [value=""/html/body/div[4]/table/tbody/tr[2]/td[3]/div[2]/table/tbody/tr[1]/td[3]/table/tbody/tr[2]/td/input";xpath"] [as=""balcik_m";input"] 
+    rpa.type("/html/body/div[4]/table/tbody/tr[2]/td[3]/div[2]/table/tbody/tr[1]/td[3]/table/tbody/tr[2]/td/input","balcik_m");
+
+rpa.echo("Execute Node:4");
+
+//< [Type] [comment="password"] [value=""/html/body/div[4]/table/tbody/tr[2]/td[3]/div[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[2]/td/input";xpath"] [as=""qBitra2021";input"] 
+    rpa.type("/html/body/div[4]/table/tbody/tr[2]/td[3]/div[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[2]/td/input","qBitra2021");
+
+rpa.echo("Execute Node:5");
+
+//< [Click] [comment="login"] [value=""/html/body/div[4]/table/tbody/tr[2]/td[3]/div[2]/table/tbody/tr[3]/td[3]/span/span/a";input"] 
+  rpa.click("/html/body/div[4]/table/tbody/tr[2]/td[3]/div[2]/table/tbody/tr[3]/td[3]/span/span/a");
+//>

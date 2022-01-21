@@ -1,0 +1,13 @@
+{
+  "name": "AirbusSureci",
+  "main": "axapta.qb",
+  "version": "0.0.1",
+  "studio_version": "3.3.21",
+  "imports": [
+    "com.google.gson.*",
+    "java.util.*",
+    "java.text.*"
+  ],
+  "config": "Debug",
+  "arguments": "chrome-disabled debug"
+}

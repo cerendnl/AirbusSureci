@@ -1,0 +1,291 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:2");
+
+//< [WaitImage] [comment="Deftere Nakil"] [image=""images/deftereNakil.png";image"] [timeout="60"] 
+    rpa.waitImage("images/deftereNakil.png",60);
+///>
+rpa.echo("Execute Node:3");
+
+//< [Click] [comment="deftereNakil"] [value=""images/deftereNakil.png";xpath"] 
+  rpa.click("images/deftereNakil.png");
+//>
+
+rpa.echo("Execute Node:5");
+
+//< [WaitImage] [comment=""] [image=""images/fatura3.png.targetOffset(-29,35)";input"] [timeout="60"] 
+    rpa.waitImage("images/fatura3.png.targetOffset(-29,35)",60);
+///>
+rpa.echo("Execute Node:6");
+
+//< [Click] [comment="Fatura"] [value=""images/fatura3.png.targetOffset(-29,35)";input"] 
+  rpa.click("images/fatura3.png.targetOffset(-29,35)");
+//>
+
+rpa.echo("Execute Node:7");
+
+//< [WaitImage] [comment=""] [image=""images/deftereNakilTarihi.png.targetOffset(-1,8)";input"] [timeout="120"] 
+    rpa.waitImage("images/deftereNakilTarihi.png.targetOffset(-1,8)",120);
+///>
+rpa.echo("Execute Node:8");
+
+//< [Click] [comment="nakil tarihi"] [value=""images/deftereNakilTarihi.png.targetOffset(-1,8)";input"] 
+  rpa.click("images/deftereNakilTarihi.png.targetOffset(-1,8)");
+//>
+
+rpa.echo("Execute Node:9");
+String monthDate="";
+
+String[] splitMonth=invoiceDate.split("-");
+String dayDate=splitMonth[0];
+String yearDate=splitMonth[2];
+switch(splitMonth[1]) {
+  case "JAN":
+    monthDate="01";
+    break;
+  case "FEB":
+    monthDate="02";
+    break;
+    case "MAR":
+    monthDate="03";
+    break;
+    case "APR":
+    monthDate="04";
+    break;
+    case "MAY":
+    monthDate="05";
+    break;
+    case "JUNE":
+    monthDate="06";
+    break;
+    case "JULY":
+    monthDate="07";
+    break;
+     case "AUG":
+    monthDate="08";
+    break;
+     case "SEP":
+    monthDate="09";
+    break;
+     case "OCT":
+    monthDate="10";
+    break;
+     case "NOV":
+    monthDate="11";
+    break;
+     case "DEC":
+    monthDate="12";
+    break;
+  default:
+    // code block
+}
+rpa.echo("Execute Node:10");
+
+//< [Keyboard] [comment=""] [0_sleep="0.5"] [1_variable="INVOICEDATE"] [2_sleep="0.5"] [3_special="Key.ENTER"] [4_sleep="0.5"] [5_variable="INVOICENUMBER"] [6_sleep="0.5"] [7_special="Key.ENTER"]  
+	rpa.sleep(0.5);
+	rpa.keyboardSend(String.valueOf(INVOICEDATE));
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+	rpa.sleep(0.5);
+	rpa.keyboardSend(String.valueOf(INVOICENUMBER));
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+///>
+rpa.echo("Execute Node:11");
+
+//< [Click] [comment="MiktarSimdiAl"] [value=""images/miktarSimdiAl.png.targetOffset(76,-6)";input"] 
+  rpa.click("images/miktarSimdiAl.png.targetOffset(76,-6)");
+//>
+
+rpa.echo("Execute Node:12");
+
+//< [WaitImage] [comment="simdiAlSec"] [image=""images/simdiAlSec.png";image"] [timeout="60"] 
+    rpa.waitImage("images/simdiAlSec.png",60);
+///>
+rpa.echo("Execute Node:14");
+
+//< [Click] [comment="simdiAlSec"] [value=""images/simdiAlSec.png";xpath"] 
+  rpa.click("images/simdiAlSec.png");
+//>
+
+rpa.echo("Execute Node:15");
+
+//< [Click] [comment="btn toplamlar"] [value=""images/btnToplamlar.png";image"] 
+  rpa.click("images/btnToplamlar.png");
+//>
+
+rpa.echo("Execute Node:16");
+
+//< [Wait] [comment="5 sec."] [time="5;input"] 
+  rpa.sleep(5);
+rpa.echo("Execute Node:17");
+
+ //< [Condition] [comment="Deftere nakil hata"] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"\"images/deftereNakildekiHata.png.targetOffset(150,50)\"","type":"input"},"secondValueInput":{"value":"","type":""},"id":0,"selected":"isvisible"}]"] 
+ if((rpa.isPresent("images/deftereNakildekiHata.png.targetOffset(150,50)")))
+ {
+ 
+rpa.echo("Execute Node:18");
+
+//< [Click] [comment=""] [value=""images/deftereNakildekiHata.png.targetOffset(150,50)";input"] 
+  rpa.click("images/deftereNakildekiHata.png.targetOffset(150,50)");
+//>
+
+rpa.echo("Execute Node:19");
+
+//< [Wait] [comment="1 sec."] [time="1;input"] 
+  rpa.sleep(1);
+
+rpa.echo("Execute Node:20");
+
+//< [Click] [comment="kapat"] [value=""images/defterenakildeCarpi.png";image"] 
+  rpa.click("images/defterenakildeCarpi.png");
+//>
+
+rpa.echo("Execute Node:21");
+
+//< [WaitImage] [comment="toplamlar fatura tutarı"] [image=""images/toplamlarFaturaTutari.png";image"] [timeout="60"] 
+    rpa.waitImage("images/toplamlarFaturaTutari.png",60);
+///>
+rpa.echo("Execute Node:22");
+
+//< [Click] [comment="toplamlar fatura tutarı"] [value=""images/toplamlarFaturaTutari.png.targetOffset(73,1)";input"] 
+  rpa.click("images/toplamlarFaturaTutari.png.targetOffset(73,1)");
+//>
+
+rpa.echo("Execute Node:23");
+
+//< [DoubleClick] [comment=""] [value=""images/toplamlarFaturaTutari.png.targetOffset(73,1)";input"] 
+  rpa.doubleClick("images/toplamlarFaturaTutari.png.targetOffset(73,1)");
+//>
+
+rpa.echo("Execute Node:24");
+
+//< [Keyboard] [comment=""] [0_sleep="1"] [1_special="ctrl+a"] [2_sleep="0.5"] [3_special="ctrl+c"] [4_sleep="1"]  
+	rpa.sleep(1);
+	rpa.keyboardWrite("ctrl+a");
+	rpa.sleep(0.5);
+	rpa.keyboardWrite("ctrl+c");
+	rpa.sleep(1);
+///>
+rpa.echo("Execute Node:25");
+
+//< [GetFromToClipboard] [comment="Clipboard operations"] [value="faturaTutari;input"] 
+    String faturaTutari = rpa.getFromClipboard();
+///>
+rpa.echo("Execute Node:27");
+
+ //< [Condition] [comment="aog"] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"AOG","type":"variable"},"secondValueInput":{"value":"0","type":"input"},"id":0,"selected":"notequal"}]"] 
+ if((AOG != 0))
+ {
+ 
+rpa.echo("Execute Node:28");
+
+//< [Click] [comment="kurulum"] [value=""images/kurulum.png.targetOffset(-3,0)";image"] 
+  rpa.click("images/kurulum.png.targetOffset(-3,0)");
+//>
+
+rpa.echo("Execute Node:29");
+
+//< [Click] [comment="sair giderler"] [value=""images/sairgiderler.png.targetOffset(-5,-25)";image"] 
+  rpa.click("images/sairgiderler.png.targetOffset(-5,-25)");
+//>
+
+}else{
+}rpa.echo("Execute Node:30");
+
+ //< [Condition] [comment="Fatura tutarı doğruysa"] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"faturaTutari","type":"input"},"secondValueInput":{"value":"INVOICEAMOUNT","type":"variable"},"id":0,"selected":"notequal"}]"] 
+ if((faturaTutari != INVOICEAMOUNT))
+ {
+ 
+rpa.echo("Execute Node:31");
+
+//< [CallAPI] [comment="Fatura Tutarı Hatası Mail"] [method="POST"] [url=""http://172.23.27.18:8000/hype/webhook/9/aogwebhook/aog";input"] [variablename="apiResponse2;input"] [variabletype="String"] [body="{\"INVOICENUMBER\": \"${INVOICENUMBER}\", \"ponum\": \"${ponum}\",\"ACCOUNTNAME\":\"${ACCOUNTNAME}\"}"] [header="{\"Content-Type\":\"application/json\"}"] 
+
+    rpa.addValuesMapping("INVOICENUMBER",INVOICENUMBER);
+    rpa.addValuesMapping("ponum",ponum);
+    rpa.addValuesMapping("ACCOUNTNAME",ACCOUNTNAME);
+String apiResponse2 = rpa.callApi("POST","http://172.23.27.18:8000/hype/webhook/9/aogwebhook/aog","{\"INVOICENUMBER\": \"${INVOICENUMBER}\", \"ponum\": \"${ponum}\",\"ACCOUNTNAME\":\"${ACCOUNTNAME}\"}","{\"Content-Type\":\"application/json\"}");
+///>
+
+}else{
+rpa.echo("Execute Node:32");
+
+//< [Click] [comment="Tamam Butonu"] [value=""images/btnTamam.png.targetOffset(-55,1)";input"] 
+  rpa.click("images/btnTamam.png.targetOffset(-55,1)");
+//>
+
+rpa.echo("Execute Node:33");
+
+//< [WaitImage] [comment="sorgulamalar"] [image=""images/sorgulamalar.png";input"] [timeout="60"] 
+    rpa.waitImage("images/sorgulamalar.png",60);
+///>
+rpa.echo("Execute Node:34");
+
+//< [Click] [comment="sorgulamalar"] [value=""images/sorgulamalar.png";input"] 
+  rpa.click("images/sorgulamalar.png");
+//>
+
+rpa.echo("Execute Node:35");
+
+//< [Click] [comment="fatura sorgulama"] [value=""images/faturasorgulama.png.targetOffset(-58,59)";image"] 
+  rpa.click("images/faturasorgulama.png.targetOffset(-58,59)");
+//>
+
+rpa.echo("Execute Node:36");
+
+//< [WaitImage] [comment="fatura gunlugu"] [image=""images/faturaGunlugu.png";input"] [timeout="60"] 
+    rpa.waitImage("images/faturaGunlugu.png",60);
+///>
+rpa.echo("Execute Node:37");
+
+//< [Type] [comment="invoice number"] [value=""images/faturaNoFiltre.png.targetOffset(-15,9)";input"] [as="INVOICENUMBER;variable"] 
+    rpa.type("images/faturaNoFiltre.png.targetOffset(-15,9)",INVOICENUMBER);
+
+rpa.echo("Execute Node:38");
+
+//< [Keyboard] [comment="ENTER "] [0_sleep="0.5"] [1_special="Key.ENTER"] [2_sleep="0.5"]  
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+	rpa.sleep(0.5);
+///>
+rpa.echo("Execute Node:39");
+
+//< [DoubleClick] [comment="Fis no"] [value=""images/fisNoFiltre.png.targetOffset(-2,36)";input"] 
+  rpa.doubleClick("images/fisNoFiltre.png.targetOffset(-2,36)");
+//>
+
+rpa.echo("Execute Node:40");
+
+//< [Keyboard] [comment="ctrl c"] [0_sleep="0.5"] [1_special="ctrl+c"] [2_sleep="0.5"]  
+	rpa.sleep(0.5);
+	rpa.keyboardWrite("ctrl+c");
+	rpa.sleep(0.5);
+///>
+rpa.echo("Execute Node:41");
+
+//< [GetFromToClipboard] [comment="Clipboard operations"] [value="fisno;input"] 
+    String fisno = rpa.getFromClipboard();
+///>
+
+rpa.echo("Execute Node:42");
+
+//< [CallAPI] [comment="Success Mail"] [method="POST"] [url=""http://172.23.27.18:8000/hype/webhook/9/basarilikayitwebhook/success";input"] [variablename="apiResponse3;input"] [variabletype="String"] [body="{    \"INVOICENUMBER\": \"${INVOICENUMBER}\",    \"ponum\": \"${ponum}\",    \"fisno\": \"${fisno}\"}"] [header="{\"Content-Type\":\"application/json\"}"] 
+
+    rpa.addValuesMapping("INVOICENUMBER",INVOICENUMBER);
+    rpa.addValuesMapping("ponum",ponum);
+    rpa.addValuesMapping("fisno",fisno);
+String apiResponse3 = rpa.callApi("POST","http://172.23.27.18:8000/hype/webhook/9/basarilikayitwebhook/success","{    \"INVOICENUMBER\": \"${INVOICENUMBER}\",    \"ponum\": \"${ponum}\",    \"fisno\": \"${fisno}\"}","{\"Content-Type\":\"application/json\"}");
+///>
+
+rpa.echo("Execute Node:43");
+
+ //< [KillProcess] [comment="Ax32.exe"] [rows="[{"applicationExe":{"value":"Ax32.exe","type":"input"},"id":0}]"]  
+rpa.killProcess("Ax32.exe");
+
+ 
+}
+}else{
+}

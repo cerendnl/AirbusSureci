@@ -1,0 +1,165 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:2");
+
+ //< [KillProcess] [comment="Ax32.exe"] [rows="[{"applicationExe":{"value":"Ax32.exe","type":"input"},"id":0}]"]  
+rpa.killProcess("Ax32.exe");
+
+ 
+rpa.echo("Execute Node:3");
+
+//< [Wait] [comment="3 sec."] [time="3;input"] 
+  rpa.sleep(3);
+
+rpa.echo("Execute Node:4");
+
+//< [OpenApplication] [comment="Axapta"] [application=""C:\\Program Files (x86)\\Microsoft Dynamics AX\\50\\Client\Bin\\Ax32.exe";input"] [session="app;input"] 
+	App app = rpa.openApp("C:\\\\Program Files (x86)\\\\Microsoft Dynamics AX\\\\50\\\\Client\\Bin\\\\Ax32.exe");
+///>
+rpa.echo("Execute Node:5");
+QbitraRpaSettings.getScreen().type(Key.UP,Key.WIN);
+rpa.sleep(1);
+rpa.echo("Execute Node:6");
+
+//< [Click] [comment="Satın alma sipariş ayrıntıları"] [value=""images/satinalma.png";image"] 
+  rpa.click("images/satinalma.png");
+//>
+
+rpa.echo("Execute Node:8");
+
+//< [Wait] [comment="3 sec."] [time="3;input"] 
+  rpa.sleep(3);
+
+rpa.echo("Execute Node:5");
+QbitraRpaSettings.getScreen().type(Key.UP,Key.WIN);
+rpa.sleep(1);
+rpa.echo("Execute Node:9");
+
+//< [Click] [comment="stok"] [value=""images/stok.png";image"] 
+  rpa.click("images/stok.png");
+//>
+
+rpa.echo("Execute Node:13");
+
+//< [Click] [comment="hareketler"] [value=""images/hareketler.png.targetOffset(-13,-17)";image"] 
+  rpa.click("images/hareketler.png.targetOffset(-13,-17)");
+//>
+
+rpa.echo("Execute Node:5");
+QbitraRpaSettings.getScreen().type(Key.UP,Key.WIN);
+rpa.sleep(1);
+rpa.echo("Execute Node:14");
+
+//< [Click] [comment="genel "] [value=""images/genel.png.targetOffset(-19,-2)";image"] 
+  rpa.click("images/genel.png.targetOffset(-19,-2)");
+//>
+
+rpa.echo("Execute Node:15");
+
+//< [DoubleClick] [comment="miktar"] [value=""images/miktar.png.targetOffset(107,-2)";image"] 
+  rpa.doubleClick("images/miktar.png.targetOffset(107,-2)");
+//>
+
+rpa.echo("Execute Node:16");
+
+//< [Keyboard] [comment="ctrl c"] [0_sleep="0.5"] [1_special="ctrl+c"] [2_sleep="0.5"]  
+	rpa.sleep(0.5);
+	rpa.keyboardWrite("ctrl+c");
+	rpa.sleep(0.5);
+///>
+rpa.echo("Execute Node:18");
+
+//< [GetFromToClipboard] [comment="Clipboard operations"] [value="miktar;input"] 
+    String miktar = rpa.getFromClipboard();
+///>
+
+rpa.echo("Execute Node:20");
+
+//< [Click] [comment="güncelleştir "] [value=""images/guncellestir.png.targetOffset(-32,-3)";image"] 
+  rpa.click("images/guncellestir.png.targetOffset(-32,-3)");
+//>
+
+rpa.echo("Execute Node:21");
+
+//< [Keyboard] [comment="ctrl c mali tarih"] [0_special="ctrl + shift+Left Arrow"] [1_special="ctrl+c"]  
+	rpa.keyboardWrite("ctrl + shift+Left Arrow");
+	rpa.keyboardWrite("ctrl+c");
+///>
+rpa.echo("Execute Node:22");
+
+//< [GetFromToClipboard] [comment="Clipboard operations"] [value="malitarih;input"] 
+    String malitarih = rpa.getFromClipboard();
+///>
+
+rpa.echo("Execute Node:23");
+
+//< [Click] [comment="alındı "] [value=""images/alindi.png";image"] 
+  rpa.click("images/alindi.png");
+//>
+
+rpa.echo("Execute Node:25");
+
+//< [Keyboard] [comment="ctrl+c"] [0_special="ctrl+c"]  
+	rpa.keyboardWrite("ctrl+c");
+///>
+rpa.echo("Execute Node:26");
+
+//< [GetFromToClipboard] [comment="Clipboard operations"] [value="girisdurumu;input"] 
+    String girisdurumu = rpa.getFromClipboard();
+///>
+rpa.echo("Execute Node:19");
+
+ //< [Condition] [comment="."] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"UNITQUANTITY","type":"variable"},"secondValueInput":{"value":"miktar","type":"variable"},"id":0,"selected":"isequal"},{"firtsValueInput":{"value":"malitarih","type":"variable"},"secondValueInput":{"value":"","type":""},"id":1,"selected":"isnull"},{"firtsValueInput":{"value":"girisdurumu","type":"input"},"secondValueInput":{"value":"\"Alındı\"","type":"input"},"id":2,"selected":"isequalforstring"}]"] 
+ if((UNITQUANTITY == miktar)&&(malitarih == null)&&(girisdurumu.equals("Alındı")))
+ {
+ 
+rpa.echo("Execute Node:28");
+
+//< [Click] [comment="kapat"] [value=""images/kapatma.png.targetOffset(48,-3)";image"] 
+  rpa.click("images/kapatma.png.targetOffset(48,-3)");
+//>
+
+}else{
+rpa.echo("Execute Node:30");
+
+//< [CallAPI] [comment="Miktar Hatası Mail"] [method="POST"] [url=""http://172.23.27.18:8000/hype/webhook/undefined/miktarhatawebhook/miktarhata";input"] [variablename="apiResponse;input"] [variabletype="String"] [body="{\"INVOICENUMBER\": \"${INVOICENUMBER}\", \"ponum\": \"${ponum}\",\"ACCOUNTNAME\":\"${ACCOUNTNAME}\"}"] [header="{\"Content-Type\":\"application/json\"}"] 
+
+    rpa.addValuesMapping("INVOICENUMBER",INVOICENUMBER);
+    rpa.addValuesMapping("ponum",ponum);
+    rpa.addValuesMapping("ACCOUNTNAME",ACCOUNTNAME);
+String apiResponse = rpa.callApi("POST","http://172.23.27.18:8000/hype/webhook/undefined/miktarhatawebhook/miktarhata","{\"INVOICENUMBER\": \"${INVOICENUMBER}\", \"ponum\": \"${ponum}\",\"ACCOUNTNAME\":\"${ACCOUNTNAME}\"}","{\"Content-Type\":\"application/json\"}");
+///>
+
+}
+rpa.echo("Execute Node:32");
+
+//< [Type] [comment="flyAnt id"] [value=""images/flyantid.png.targetOffset(-25,10)";image"] [as="numberOnly;variable"] 
+    rpa.type("images/flyantid.png.targetOffset(-25,10)",numberOnly);
+
+rpa.echo("Execute Node:33");
+
+//< [Keyboard] [comment="enter"] [0_special="Key.ENTER"]  
+	rpa.keyboardSend(Key.ENTER);
+///>
+rpa.echo("Execute Node:31");
+
+//< [Type] [comment="Net tutar"] [value=""images/nettutar.png.targetOffset(-9,10)";image"] [as="INVOICEAMOUNT;variable"] 
+    rpa.type("images/nettutar.png.targetOffset(-9,10)",INVOICEAMOUNT);
+
+rpa.echo("Execute Node:34");
+
+//< [Keyboard] [comment="enter"] [0_special="Key.ENTER"]  
+	rpa.keyboardSend(Key.ENTER);
+///>
+rpa.echo("Execute Node:35");
+
+//< [Type] [comment="unit quantity"] [value=""images/simdialQuantity.png.targetOffset(-3,23)";image"] [as="UNITQUANTITY;variable"] 
+    rpa.type("images/simdialQuantity.png.targetOffset(-3,23)",UNITQUANTITY);
+
+rpa.echo("Execute Node:36");
+
+//< [Type] [comment="Departman Kodu"] [value=""images/departmanKodu.png.targetOffset(-4,22)";xpath"] [as="ACCOUNTCODE;input"] 
+    rpa.type("images/departmanKodu.png.targetOffset(-4,22)",ACCOUNTCODE);

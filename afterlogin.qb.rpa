@@ -1,0 +1,101 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:2");
+
+//< [Click] [comment="Order Status"] [value=""/html/body/table[2]/tbody/tr[1]/td[4]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/center[2]/table/tbody/tr/td[1]/table/tbody/tr[11]/td[1]/a";input"] 
+  rpa.click("/html/body/table[2]/tbody/tr[1]/td[4]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr/td/table/tbody/tr/td/center[2]/table/tbody/tr/td[1]/table/tbody/tr[11]/td[1]/a");
+//>
+
+rpa.echo("Execute Node:3");
+
+//< [Type] [comment="P.O. Number "] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[1]/td/input[1]";xpath"] [as="ponum;variable"] 
+    rpa.type("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[1]/td/input[1]",ponum);
+
+rpa.echo("Execute Node:4");
+
+//< [Click] [comment="submit"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[1]/td/input[2]";input"] 
+  rpa.click("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[1]/td/input[2]");
+//>
+
+rpa.echo("Execute Node:5");
+
+//< [Read] [comment="INVOICENUMBER"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[3]/a";xpath"] [to="INVOICENUMBER;input"] 
+	  String INVOICENUMBER = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[3]/a");
+
+rpa.echo("Execute Node:6");
+
+//< [Read] [comment="PARTNUMBER"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[3]";xpath"] [to="PARTNUMBER;input"] 
+	  String PARTNUMBER = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[3]");
+
+rpa.echo("Execute Node:8");
+
+//< [Read] [comment="INVOICEDATE"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[5]";xpath"] [to="INVOICEDATE;input"] 
+	  String INVOICEDATE = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[5]");
+
+rpa.echo("Execute Node:9");
+
+//< [Read] [comment="DUEDATE"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[11]";xpath"] [to="DUEDATE;input"] 
+	  String DUEDATE = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[11]");
+
+rpa.echo("Execute Node:11");
+String PROCESSDATE = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
+
+rpa.echo("Execute Node:12");
+
+ //< [Variable] [comment="ACCOUNTNAME and PROCESSSTATUS"] [rows="[{"firtsValueInput":{"value":"ACCOUNTNAME","type":"input"},"secondValueInput":{"value":"\"AIRBUS S.A.S.\"","type":"input"},"id":0,"selected":"String","uuid":"MRegn"},{"firtsValueInput":{"value":"PROCESSSTATUS","type":"input"},"secondValueInput":{"value":"\"insert\"","type":"input"},"id":1,"selected":"String","uuid":"dKlk9"},{"firtsValueInput":{"value":"ACCOUNTCODE","type":"input"},"secondValueInput":{"value":"\"AD340101\"","type":"input"},"id":2,"selected":"String","uuid":"SuCNB"}]"] 
+String ACCOUNTNAME="AIRBUS S.A.S.";
+String PROCESSSTATUS="insert";
+String ACCOUNTCODE="AD340101";
+
+ 
+rpa.echo("Execute Node:13");
+
+//< [Read] [comment="UNIT"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[4]/td[6]";xpath"] [to="UNIT;input"] 
+	  String UNIT = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[4]/td[6]");
+
+rpa.echo("Execute Node:14");
+
+//< [Read] [comment="UNITPRICE"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[7]";xpath"] [to="UNITPRICE;input"] 
+	  String UNITPRICE = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[7]");
+
+rpa.echo("Execute Node:15");
+
+//< [Read] [comment="UNITQUANTITY"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[5]";xpath"] [to="UNITQUANTITY;input"] 
+	  String UNITQUANTITY = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[5]");
+
+rpa.echo("Execute Node:19");
+
+//< [Read] [comment="INVOICEAMOUNT"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[6]";xpath"] [to="INVOICEAMOUNT;input"] 
+	  String INVOICEAMOUNT = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[16]/td[6]");
+
+rpa.echo("Execute Node:21");
+
+//< [Read] [comment="CURRENCYCODE"] [value=""/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[8]";xpath"] [to="CURRENCYCODE;input"] 
+	  String CURRENCYCODE = rpa.read("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[7]/td[8]");
+
+rpa.echo("Execute Node:17");
+int AOG = Integer.parseInt(INVOICEAMOUNT)-Integer.parseInt(UNITPRICE)*Integer.parseInt(UNITQUANTITY);
+
+rpa.echo("Execute Node:20");
+
+//< [CallAPIWithForm] [comment="update process log table"] [method="POST"] [url=""http://172.23.27.18:8000/hype/webhook/8/insertwebhook/insert";input"] [variablename="apiResponse;input"] [variabletype="String"] [body="[{"firtsValueInput":{"value":"INVOICENUMBER","type":"variable"},"secondValueInput":{"value":"INVOICENUMBER","type":"variable"},"id":0,"uuid":"U4LNz"},{"firtsValueInput":{"value":"PARTNUMBER","type":"variable"},"secondValueInput":{"value":"PARTNUMBER","type":"variable"},"id":1,"uuid":"4DuaA"},{"firtsValueInput":{"value":"INVOICEDATE","type":"variable"},"secondValueInput":{"value":"INVOICEDATE","type":"variable"},"id":2,"uuid":"Osdme"},{"firtsValueInput":{"value":"DUEDATE","type":"variable"},"secondValueInput":{"value":"DUEDATE","type":"variable"},"id":3,"uuid":"8hcnY"},{"firtsValueInput":{"value":"PROCESSDATE","type":"variable"},"secondValueInput":{"value":"PROCESSDATEPROCESSDATE","type":"variable"},"id":4,"uuid":"br2f7"},{"firtsValueInput":{"value":"ACCOUNTNAME","type":"variable"},"secondValueInput":{"value":"ACCOUNTNAME","type":"variable"},"id":5,"uuid":"MPRSf"},{"firtsValueInput":{"value":"PROCESSSTATUS","type":"variable"},"secondValueInput":{"value":"PROCESSSTATUS","type":"variable"},"id":6,"uuid":"kMyhs"},{"firtsValueInput":{"value":"ACCOUNTCODE","type":"variable"},"secondValueInput":{"value":"ACCOUNTCODE","type":"variable"},"id":7,"uuid":"nRQxu"},{"firtsValueInput":{"value":"UNIT","type":"variable"},"secondValueInput":{"value":"UNIT","type":"variable"},"id":8,"uuid":"5pOCQ"},{"firtsValueInput":{"value":"UNITPRICE","type":"variable"},"secondValueInput":{"value":"UNITPRICE","type":"variable"},"id":9,"uuid":"gv9jT"},{"firtsValueInput":{"value":"UNITQUANTITY","type":"variable"},"secondValueInput":{"value":"UNITQUANTITY","type":"variable"},"id":10,"uuid":"fd9Ig"},{"firtsValueInput":{"value":"INVOICEAMOUNT","type":"variable"},"secondValueInput":{"value":"INVOICEAMOUNT","type":"variable"},"id":11,"uuid":"bSuoT"},{"firtsValueInput":{"value":"AOG","type":"variable"},"secondValueInput":{"value":"AOG","type":"variable"},"id":12,"uuid":"LE01E"}]"] [header="[]"] 
+    HashMap<String,String> _MV73T =   new HashMap<String, String>();
+    HashMap<String,String> _N9CtT = new HashMap<String, String>();
+    _MV73T.put("INVOICENUMBER",INVOICENUMBER);
+_MV73T.put("PARTNUMBER",PARTNUMBER);
+_MV73T.put("INVOICEDATE",INVOICEDATE);
+_MV73T.put("DUEDATE",DUEDATE);
+_MV73T.put("PROCESSDATE",PROCESSDATEPROCESSDATE);
+_MV73T.put("ACCOUNTNAME",ACCOUNTNAME);
+_MV73T.put("PROCESSSTATUS",PROCESSSTATUS);
+_MV73T.put("ACCOUNTCODE",ACCOUNTCODE);
+_MV73T.put("UNIT",UNIT);
+_MV73T.put("UNITPRICE",UNITPRICE);
+_MV73T.put("UNITQUANTITY",UNITQUANTITY);
+_MV73T.put("INVOICEAMOUNT",INVOICEAMOUNT);
+_MV73T.put("AOG",AOG);
+
+    String apiResponse = rpa.callApiWithForm("POST","http://172.23.27.18:8000/hype/webhook/8/insertwebhook/insert",_MV73T,_N9CtT);

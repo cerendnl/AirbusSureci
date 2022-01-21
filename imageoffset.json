@@ -1,0 +1,76 @@
+{
+  "imageoffset": [
+    {
+      "X": -13,
+      "Y": -17,
+      "filePath": "images/hareketler.png",
+      "id": 1642685419453
+    },
+    {
+      "X": -19,
+      "Y": -2,
+      "filePath": "images/genel.png",
+      "id": 1642685593470
+    },
+    {
+      "X": 107,
+      "Y": -2,
+      "filePath": "images/miktar.png",
+      "id": 1642685655905
+    },
+    {
+      "X": -32,
+      "Y": -3,
+      "filePath": "images/guncellestir.png",
+      "id": 1642685860443
+    },
+    {
+      "X": -12,
+      "Y": -28,
+      "filePath": "images/malitarih.png",
+      "id": 1642685946137
+    },
+    {
+      "X": 48,
+      "Y": -3,
+      "filePath": "images/kapatma.png",
+      "id": 1642687116664
+    },
+    {
+      "X": -9,
+      "Y": 10,
+      "filePath": "images/nettutar.png",
+      "id": 1642748608172
+    },
+    {
+      "X": -25,
+      "Y": 10,
+      "filePath": "images/flyantid.png",
+      "id": 1642748725504
+    },
+    {
+      "X": -3,
+      "Y": 23,
+      "filePath": "images/simdialQuantity.png",
+      "id": 1642749229216
+    },
+    {
+      "X": -3,
+      "Y": 0,
+      "filePath": "images/kurulum.png",
+      "id": 1642756682133
+    },
+    {
+      "X": -5,
+      "Y": -25,
+      "filePath": "images/sairgiderler.png",
+      "id": 1642756804424
+    },
+    {
+      "X": -58,
+      "Y": 59,
+      "filePath": "images/faturasorgulama.png",
+      "id": 1642758359843
+    }
+  ]
+}

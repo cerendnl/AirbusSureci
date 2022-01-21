@@ -1,0 +1,17 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:4");
+
+//< [WaitImage] [comment=""] [image=""images/winIcon.png";image"] [timeout="60"] 
+    rpa.waitImage("images/winIcon.png",60);
+///>
+rpa.echo("Execute Node:5");
+
+//< [Keyboard] [comment="win+d"] [0_sleep="0.5"] [1_special="win+d"] [2_sleep="0.5"]  
+	rpa.sleep(0.5);
+	rpa.keyboardWrite("win+d");
+	rpa.sleep(0.5);
+///>
